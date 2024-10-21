@@ -31,8 +31,10 @@ class VideoAdmin(admin.ModelAdmin):
     def video_status(self, obj: Video) -> str:
         return obj.get_video_status_display()
 
+    # Serve para adicionar novos menus la no admin
     def get_urls(self):
         urls = super().get_urls()
+        # Cada path tem uma rota, uma view e um nome
         custom_urls = [
             path(
                 '<int:id>/upload-video', 
@@ -125,4 +127,3 @@ class VideoAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Video, VideoAdmin)
 admin.site.register(Tag)
-#admin.site.register(VideoMedia)
